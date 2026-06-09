@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="shortcut icon" href="img/catrina.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Esta es nuestra pagina web del proyecto final">
+    <meta name="keywords" content="3B,fisico-matematico">
+    <meta name="author" content="Angel gabriel Angulo Castellanos,Hassary Suheil Infante Magaña,Nelson Garcia Wilson,Jasya Carrillo Ramos,Eduardo Alejandro Guzmán Barrera">
+    <title>Strawberry Catrina(Mi carrito)</title>
+        <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ateción al cliente.css">
+
+   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- COLOCA TU LOGO AQUÍ -->
+                <a href="index.html">
+                    <img src="img/logo.png"  alt="logo">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fi fi-rs-strawberry"></i></i>Inicio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#"><i class="fi fi-rr-user-headset"></i></i>Servicios ▾</a>
+                        <ul class="dropdown-content">
+                            <li><a href="Informe de problemas.html"><i class="fi fi-sr-problem-solving"></i>Informe de problemas</a></li>
+                            <li><a href="ateción al cliente.html"><i class="fi fi-sc-user-headset"></i></i>Atención al cliente</a></li>
+                            
+                        </ul>
+                    </li>
+                   
+
+                    <li><a href="Mi carrito.html"> <i class="fi fi-rs-shopping-cart-add"></i></i>Mi carrito</a></li>
+                    <li><a href="contacto.html"> <i class="fi fi-sr-phone-call"></i>Contacto</a></li>
+                    <li><a href="login.html" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </header>
+
+    <main class="container" style="padding: 100px 0;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px;">Bienvenido ateció al cliente de Strawberry Catrina.</h1>
+        <p style="font-size: 1.2rem; max-width: 600px;">“Fresas con crema y atención que enamora 🍓”.</p>
+         <section class="seccion-info">
+
+  <div class="chat-container">
+  <div class="chat-header">
+    Atención al Cliente
+  </div>
+
+  <div class="chat-box" id="chatBox">
+    <div class="message bot">
+      ¡Hola! 👋 Bienvenido al soporte. ¿En qué puedo ayudarte?
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<script>
+  function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value.trim();
+
+    if (message === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+
+    // Mensaje usuario
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("message", "user");
+    userMessage.textContent = message;
+    chatBox.appendChild(userMessage);
+
+    // Respuesta automática del bot
+    let botMessage = document.createElement("div");
+    botMessage.classList.add("message", "bot");
+
+    let response = "";
+
+    if (message.toLowerCase().includes("hola")) {
+      response = "¡Hola! 😊 ¿Cómo puedo ayudarte hoy?";
+    } 
+    else if (message.toLowerCase().includes("precio")) {
+      response = "Nuestros precios varían según el servicio que necesites.";
+    } 
+    else if (message.toLowerCase().includes("horario")) {
+      response = "Nuestro horario es de lunes a viernes de 9:00 AM a 6:00 PM.";
+    } 
+    else if (message.toLowerCase().includes("contacto")) {
+      response = "Puedes contactarnos al correo soporte@empresa.com";
+    } 
+    else {
+      response = "Gracias por tu mensaje. Un asesor te responderá pronto.";
+    }
+
+    setTimeout(() => {
+      botMessage.textContent = response;
+      chatBox.appendChild(botMessage);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 500);
+
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  // Enviar con Enter
+  document.getElementById("userInput").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  });
+</script>
+
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 id="N12">Contacto</h4>
+                    <p>📍 Preparatoria Augusto Hernández Olivé</p>
+               <a href="https://wa.me/529331555798?text=Hola,%20me%20gustaría%20recibir%20información%20sobre%20sus%20productos%20o%20servicios." target="_blank"><p><i class="fi fi-brands-whatsapp"></i> +52 933 155 5798</p></a>
+                  
+                </div>
+                <div class="footer-col">
+                    <h4>Ubicación</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1893.0227893539513!2d-93.21604429099216!3d18.39077664351629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ee8cd7cc8ce477%3A0xe16984e99de48f21!2sPreparatoria%20Augusto%20Hern%C3%A1ndez%20Oliv%C3%A9!5e0!3m2!1ses!2smx!4v1779331938267!5m2!1ses!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p>México, CP 86000</p>
+                    <a href="https://maps.app.goo.gl/ubLQ1a3a1GZpv6aMA"target="_blank">Ver en Google Maps</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/strawberry_catrina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="target="_blank"> <i class="fi fi-brands-instagram"></i>strawberry_catrina</a></li>
+                        <li><a href="ateción al cliente.html">Ateción al Cliente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Angel gabriel Angulo Castellanos,Hassary Suheil Infante Magaña,Nelson Garcia Wilson,Jasya Carrillo Ramos,Eduardo Alejandro Guzmán Barrera 3B. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="banner.js"></script>
+
+
+</body>
+</html>
