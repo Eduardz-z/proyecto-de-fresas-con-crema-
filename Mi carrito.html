@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="shortcut icon" href="img/catrina.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Esta es nuestra pagina web del proyecto final">
+    <meta name="keywords" content="3B,fisico-matematico">
+    <meta name="author" content="Angel gabriel Angulo Castellanos,Hassary Suheil Infante Magaña,Nelson Garcia Wilson,Jasya Carrillo Ramos,Eduardo Alejandro Guzmán Barrera">
+    <title>Strawberry Catrina(Mi carrito)</title>
+        <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Estilos del carrito.css">
+
+   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- COLOCA TU LOGO AQUÍ -->
+                <a href="index.html">
+                    <img src="img/logo.png"  alt="logo">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fi fi-rs-strawberry"></i></i>Inicio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#"><i class="fi fi-rr-user-headset"></i></i>Servicios ▾</a>
+                        <ul class="dropdown-content">
+                            <li><a href="Informe de problemas.html"><i class="fi fi-sr-problem-solving"></i>Informe de problemas</a></li>
+                            <li><a href="ateción al cliente.html"><i class="fi fi-sc-user-headset"></i></i>Atención al cliente</a></li>
+                      
+                        </ul>
+                    </li>
+                   
+
+                    <li><a href="Mi carrito.html"> <i class="fi fi-rs-shopping-cart-add"></i></i>Mi carrito</a></li>
+                    <li><a href="contacto.html"> <i class="fi fi-sr-phone-call"></i>Contacto</a></li>
+                    <li><a href="login.html" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </header>
+
+    <main class="container" style="padding: 100px 0;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px;">Bienvenido a tu carrito de Strawberry Catrina.</h1>
+        <p style="font-size: 1.2rem; max-width: 600px;">“Lleva la dulzura contigo.”</p>
+         <section class="seccion-info">
+
+    <div class="contenedor">
+<div class="carrito">
+
+<ul id="lista"></ul>
+
+<p class="total">Total: $<span id="total">0</span></p>
+
+<button class="pagar" onclick="pagar()">💳 Pagar</button>
+<button class="vaciar" onclick="vaciar()">Vaciar carrito</button>
+
+</div>
+</div>
+
+<script>
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let lista = document.getElementById("lista");
+
+function mostrar(){
+
+    lista.innerHTML = "";
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+
+        let precio = Number(item.precio) || 0;
+
+        total += precio;
+
+        let li = document.createElement("li");
+
+        /* 🚫 SIN x1, SIN cantidad visible */
+        li.innerHTML = `
+        <span>
+        ${item.producto} - $${precio}
+        </span>
+
+        <button class="quitar" onclick="eliminar(${index})">
+        Quitar
+        </button>
+        `;
+
+        lista.appendChild(li);
+
+    });
+
+    document.getElementById("total").textContent = total;
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function eliminar(index){
+    carrito.splice(index, 1);
+    mostrar();
+}
+
+function vaciar(){
+    carrito = [];
+    mostrar();
+}
+
+function pagar(){
+
+    if(carrito.length === 0){
+        alert("Tu carrito está vacío 🍓");
+        return;
+    }
+
+    let total = carrito.reduce((sum, item) => {
+        return sum + (Number(item.precio) || 0);
+    }, 0);
+
+    alert("💳 Compra realizada\nTotal: $" + total + " MXN 🍓");
+
+    carrito = [];
+    mostrar();
+}
+
+mostrar();
+
+</script>
+
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 id="N12">Contacto</h4>
+                    <p>📍 Preparatoria Augusto Hernández Olivé</p>
+                <a href="https://wa.me/529331555798?text=Hola,%20me%20gustaría%20recibir%20información%20sobre%20sus%20productos%20o%20servicios." target="_blank"><p> <i class="fi fi-brands-whatsapp"></i>+52 933 155 5798</p></a>
+                  
+                </div>
+                <div class="footer-col">
+                    <h4>Ubicación</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1893.0227893539513!2d-93.21604429099216!3d18.39077664351629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ee8cd7cc8ce477%3A0xe16984e99de48f21!2sPreparatoria%20Augusto%20Hern%C3%A1ndez%20Oliv%C3%A9!5e0!3m2!1ses!2smx!4v1779331938267!5m2!1ses!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p>México, CP 86000</p>
+                    <a href="https://maps.app.goo.gl/ubLQ1a3a1GZpv6aMA"target="_blank">Ver en Google Maps</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/strawberry_catrina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="target="_blank"> <i class="fi fi-brands-instagram"></i>strawberry_catrina</a> </li>
+                    
+                        <li><a href="ateción al cliente.html">Ateción al Cliente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Angel gabriel Angulo Castellanos,Hassary Suheil Infante Magaña,Nelson Garcia Wilson,Jasya Carrillo Ramos,Eduardo Alejandro Guzmán Barrera 3B. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="banner.js"></script>
+
+
+</body>
+</html>
